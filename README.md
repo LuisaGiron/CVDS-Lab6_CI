@@ -49,3 +49,20 @@
 		* OPTIONS: es utilizado para describir las opciones de comunicación para el recurso de destino.
 		* TRACE: realiza una prueba de bucle de retorno de mensaje a lo largo de la ruta al recurso de destino.
 		* PATCH: es utilizado para aplicar modificaciones parciales a un recurso.
+7. Utilizar ``curl [-v | -i]`. ¿Cuáles son las diferencias con los diferentes parámetros?
+	+ Los resultados están en [curl1][1] y [curl2][2]
+	+ La diferencia entre -i y -v es que `curl -i` muestra los protocoloes de cabecera usados en la petición.
+
+
+
+
+
+
+
+
+
+
+
+
+[1]: ./curl1.txt
+[2]: ./curl2.txt
