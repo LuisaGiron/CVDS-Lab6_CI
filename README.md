@@ -85,6 +85,7 @@
 1. Formulario web creado (POST):
 
 ![./img/formularioPOST1.PNG](./img/formularioPOST1.PNG)
+![./img/formularioPOST4.PNG](./img/formularioPOST4.PNG)
 
 2. Validación de formulario:
 
@@ -93,10 +94,10 @@
 
 3. Al usar el método de petición `GET`, los atributos son mostrados en la URL
 
-![./img/formularioGET1.PNG]
+![./img/formularioGET1.PNG](./img/formularioGET1.PNG)
 
 
-## ****
+## **Parte IV. - Frameworks Web MVC – Java Server Faces / Prime Faces**
 
 
 
