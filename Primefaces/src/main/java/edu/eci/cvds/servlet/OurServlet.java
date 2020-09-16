@@ -74,6 +74,8 @@ public class OurServlet extends HttpServlet {
 			}catch (IOException ioe) {
 				resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
 				writeNotFound(resp.getWriter());
+			}catch (NumberFormatException nfe) {
+				throw new MalformedURLException();
 			}
 			
 		}catch (MalformedURLException errorURL) {
