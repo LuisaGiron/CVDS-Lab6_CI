@@ -54,6 +54,27 @@
 	+ La diferencia entre -i y -v es que `curl -i` muestra los protocoloes de cabecera usados en la petición.
 
 
+## **Parte II. - Haciendo una aplicación Web dinámica a bajo nivel**
+1. Para la creación del proyecto con el arquetipo 'webapp', se utilizó:
+	```mvn archetype:generate -DgroupId=com.primefaces.web -DartifactId=Primefaces -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false```
+
+2. El resultado de ejecutar `mvn tomcat7:run` y abrir la dirección *http://localhost:8080/helloServlet* es este:
+	
+![./img/helloServlet1.PNG](./img/helloServlet1.PNG)
+
+
+3. El resultado de la petición **GET** es:
+
+![./img/helloServlet2.PNG](./img/helloServlet2.PNG)
+
+
+4. La dirección [json][3] nos muestra lo que parece ser un generador *Lorem-Ipsum* (texto aleatorio). Los números cambian el parámetro llamado 'id'.
+
+5. Para la ejecución del servidor tomcat, definimos nuestro servlet *OutServlet* que responde a la url */servlet*
+
+6. 
+
+
 
 
 
@@ -66,3 +87,4 @@
 
 [1]: ./curl1.txt
 [2]: ./curl2.txt
+[3]: https://jsonplaceholder.typicode.com/todos/1
