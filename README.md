@@ -80,8 +80,23 @@
 ![./img/ourServlet4.PNG](./img/ourServlet4.PNG)
 
 
+## **Parte III.**
+
+1. Formulario web creado (POST):
+
+![./img/formularioPOST1.PNG](./img/formularioPOST1.PNG)
+
+2. Validación de formulario:
+
+![./img/formularioPOST2.PNG](./img/formularioPOST2.PNG)
+![./img/formularioPOST3.PNG](./img/formularioPOST3.PNG)
+
+3. Al usar el método de petición `GET`, los atributos son mostrados en la URL
+
+![./img/formularioGET1.PNG]
 
 
+## ****
 
 
 

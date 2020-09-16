@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+        function validateForm() {
+        	var x;
+        	x = document.getElementById("id").value;
+        	if (isNaN(x)) {
+        		alert("Valor no numérico: '"+x+"'");
+        		return false;
+        	}else if (x < 0) {
+        		alert("Valor negativo no permitido");
+        		return false;
+        	}
+        	return true;
+        }
+        </script>
+    </head>
+    <body>
+        <h1>Simple HTML Form</h1>
+        <form method="get" action="servlet" onsubmit="return validateForm()">
+        <label for="id">Id:</label>
+        <input type="text" id="id" name="id" required><br><br>
+        <input type="submit" value="Enviar"> 
+        <input type="reset" value="Borrar">
+        </form>
+    </body>
+</html>
