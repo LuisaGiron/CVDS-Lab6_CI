@@ -45,6 +45,8 @@ public class OurServlet extends HttpServlet {
 			}catch (IOException ioe) {
 				resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
 				writeNotFound(resp.getWriter());
+			}catch (NumberFormatException nfe) {
+				throw new MalformedURLException();
 			}
 			
 		}catch (MalformedURLException errorURL) {
@@ -89,9 +91,6 @@ public class OurServlet extends HttpServlet {
 			w.write(new StringBuilder("<h1>")
 					.append("500: Internal Server Error")
 					.append("</h1>")
-					.append("El servidor encontró un error interno o una configuración incorrecta y no pudo completar su solicitud. "
-							+ "Póngase en contacto con el administrador del servidor, webmaster@domain.com e infórmeles sobre la hora en que se produjo el error, "
-							+ "y todo lo que haya hecho que pudo haber causado el error. Más información sobre este error puede estar disponible en el registro de errores del servidor.")
 					.toString()
 					);
 		}catch (IOException ioe) {}
