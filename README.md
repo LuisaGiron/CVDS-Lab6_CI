@@ -72,7 +72,12 @@
 
 5. Para la ejecución del servidor tomcat, definimos nuestro servlet *OutServlet* que responde a la url */servlet*
 
-6. 
+6. Ejecuciones:
+
+![./img/ourServlet1.PNG](./img/ourServlet1.PNG)
+![./img/ourServlet2.PNG](./img/ourServlet2.PNG)
+![./img/ourServlet3.PNG](./img/ourServlet3.PNG)
+![./img/ourServlet4.PNG](./img/ourServlet4.PNG)
 
 
 
