@@ -2,6 +2,7 @@ package edu.eci.cvds.servlet.bean;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @ManagedBean(name="calculadoraBean")
-@ApplicationScoped
+@SessionScoped
 public class CalculadoraBean {
 	
 	private double mean;
@@ -18,11 +19,13 @@ public class CalculadoraBean {
 	private double stdDev;
 	private double variance;
 	private List<Double> numeros;
+	private List<String> pastList;
 	
 	private String listaNumeros;
 	
 	public CalculadoraBean() {
 		numeros = new ArrayList<Double>();
+		pastList = new ArrayList<String>();
 		restart();
 	}
 	
@@ -84,12 +87,14 @@ public class CalculadoraBean {
 		variance = 0;
 		stdDev = 0;
 		numeros.clear();
+		pastList.clear();
 		listaNumeros = "";
 	}
 	
 	
 	private void stringToList(String n) {
 		String[] strs = n.split(";");
+		pastList.add(n);
 		for (String s: strs) numeros.add(Double.parseDouble(s));
 	}
 
@@ -152,6 +157,11 @@ public class CalculadoraBean {
 	public void setListaNumeros(String listaNumeros) {
 		this.listaNumeros = listaNumeros;
 		stringToList(listaNumeros);
+	}
+
+
+	public List<String> getPastList() {
+		return pastList;
 	}
 	
 	

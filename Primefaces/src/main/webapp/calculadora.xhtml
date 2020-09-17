@@ -13,14 +13,21 @@ xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 			<p:inputText value="#{calculadoraBean.listaNumeros}" placeholder="Numbers here" binding="#{input}"/><br/>
 			<p:outputLabel id="promedio" value="#{calculadoraBean.mean}"/>
 			<p:commandButton value="Calcular Promedio" update="promedio" actionListener="#{calculadoraBean.calculateMean(input.value)}"/><br/>
-			<p:outputLabel id="mediana" value="#{calculadoraBean.median}"/>
+			<p:outputLabel id="mediana" value="#{calculadoraBean.median}"/>  
 			<p:commandButton value="Calcular Mediana" update="mediana" actionListener="#{calculadoraBean.calculateMedian(input.value)}"/><br/>
-			<p:outputLabel id="varianza" value="#{calculadoraBean.variance}"/>
+			<p:outputLabel id="varianza" value="#{calculadoraBean.variance}"/>  
 			<p:commandButton value="Calcular Varianza" update="varianza" actionListener="#{calculadoraBean.calculateVariance(input.value)}"/><br/>
-			<p:outputLabel id="stdDev" value="#{calculadoraBean.stdDev}"/>
+			<p:outputLabel id="stdDev" value="#{calculadoraBean.stdDev}"/>  
 			<p:commandButton value="Calcular Desviacion Estandar" update="stdDev" actionListener="#{calculadoraBean.calculateStandardDeviation(input.value)}"/><br/>
 			<p:commandButton value="Reiniciar" update="calculadora_form" actionListener="#{calculadoraBean.restart()}"/>
 		</h:form>
+		<br/><br/>
+		<p:dataTable id="listTable" value="#{calculadoraBean.pastList}" var="list">
+			<p:column>
+        		<h:outputText value="#{list}"/>
+    		</p:column>
+		</p:dataTable>
+		<p:commandButton value="Ver Historial" update="listTable" />
 	</h:body>
 
 </html>

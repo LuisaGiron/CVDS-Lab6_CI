@@ -155,7 +155,21 @@ Cuando el servidor web recibe una solicitud para la aplicación, usa el descript
 
 1. La sección `<welcome-file-list>` es opcional. Le dice al servidor que debe verificar esa URL cuando el usuario intente ingresar a ella.
 
-2. 
+2. Ejecución correcta de la aplicación:
+
+![./img/aplicación1.PNG](./img/aplicación1.PNG)
+
+
+3. Como está sujeta a la aplicación por la anotación `@AplicationScoped`, aunque sean navegadores o computadores diferentes, se mantienen los mismos valores.
+
+![./img/aplicacion2.PNG](./img/aplicacion2.PNG)
+
+4. "(...)modifique el código del backing-bean de manera que use la anotación @SessionScoped en lugar de @ApplicationScoped. Reinicie la aplicación y repita el ejercicio anterior.
+Dado la anterior, ¿Cuál es la diferencia entre los backing-beans de sesión y los de aplicación?"
+
+	+ Cuando es `@SessionScoped`, los valores se mantienen para cada sesión. 
+	
+	![./img/aplicacion3.PNG](./img/aplicacion3.PNG)
 
 
 
