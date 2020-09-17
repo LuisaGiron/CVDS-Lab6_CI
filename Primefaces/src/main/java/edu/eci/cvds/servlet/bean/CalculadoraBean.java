@@ -8,75 +8,95 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @ManagedBean(name="calculadoraBean")
 @SessionScoped
 public class CalculadoraBean {
 	
+	
+	private List<Double> numeros;
+	private List<String> pastList;
+
+
 	private double mean;
 	private double mode;
 	private double median;
-	private double stdDev;
 	private double variance;
-	private List<Double> numeros;
-	private List<String> pastList;
+	private double stdDev;
 	
-	private String listaNumeros;
+	private String numberList;
+	
 	
 	public CalculadoraBean() {
 		numeros = new ArrayList<Double>();
 		pastList = new ArrayList<String>();
-		restart();
 	}
 	
 	
 	public double calculateMean(String n) {
-		mean = 0;
-		for (Double d: numeros) mean += d;
-		mean /= numeros.size();
+		stringToList(n);
+		double result = 0;
+		for (double d: numeros) result += d/numeros.size();
 		
-		return getMean();
-	}
-	
-	public double calculateMode(String n) {
-		int reps = 0;
-		HashMap<Double, Integer> map = new HashMap<Double, Integer>();
-		for (Double d: numeros) {
-			if (!map.containsKey(d)) map.put(d, 1); 
-			else map.put(d, map.get(d)+1);
-			
-			if (map.get(d) > reps) {
-				reps = map.get(d);
-				mode = d;
-			}
-		}
+		setMean(result);
 		
-		return getMode();
-	}
-	
-	public double calculateMedian(String n) {
-		Collections.sort(numeros);
-		int size = numeros.size();
-		median = (size % 2 == 0) ? (numeros.get(size/2-1)+numeros.get(size/2))/2: numeros.get((size-1)/2);
-		
-		return getMedian();
+		return result;
 	}
 	
 	
 	public double calculateVariance(String n) {
-		calculateMean(n);
-		variance = 0;
-		for (Double d: numeros) variance += Math.pow((mean-d), 2)/numeros.size();
+		double m = calculateMean(n);
+		double result = 0;
+		for (double d: numeros) result += Math.pow((m-d), 2)/numeros.size();
 		
-		return getVariance();
+		setVariance(result);
+		
+		return result;
+	}
+
+
+	public double calculateMode(String n) {
+		stringToList(n);
+		double result = 0;
+		double repsMax= 0;
+		Map<Double, Integer> h = new HashMap<Double, Integer>();
+		for (double d: numeros) {
+			if (h.containsKey(d)) h.replace(d, h.get(d)+1);
+			else h.put(d, 1);
+			
+			if (repsMax < h.get(d)) {
+				result = d;
+				repsMax = h.get(d);
+			}
+			
+		}
+		
+		setMode(result);
+		
+		return result;
 	}
 	
 	
 	public double calculateStandardDeviation(String n) {
-		calculateVariance(n);
-		stdDev = Math.sqrt(variance);
+		double result = Math.sqrt(calculateVariance(n));
 		
-		return getStdDev();
+		setStdDev(result);
+		
+		return result;
+		
+	}
+	
+	
+	public double calculateMedian(String n) {
+		stringToList(n);
+		double result = 0;
+		Collections.sort(numeros);
+		result = (numeros.size() % 2 != 0) ? numeros.get((numeros.size()-1)/2): (numeros.get(numeros.size()/2 -1) + numeros.get(numeros.size()/2))/2;
+		
+		setMedian(result);
+		
+		return result;
 	}
 	
 	
@@ -88,14 +108,13 @@ public class CalculadoraBean {
 		stdDev = 0;
 		numeros.clear();
 		pastList.clear();
-		listaNumeros = "";
 	}
 	
 	
-	private void stringToList(String n) {
-		String[] strs = n.split(";");
-		pastList.add(n);
-		for (String s: strs) numeros.add(Double.parseDouble(s));
+	private void stringToList(String str) {
+		numeros.clear();
+		if (pastList.isEmpty() || !str.equals(pastList.get(pastList.size()-1))) pastList.add(str);
+		for (String s: str.split(";")) numeros.add(Double.parseDouble(s));
 	}
 
 
@@ -104,18 +123,8 @@ public class CalculadoraBean {
 	}
 
 
-	public void setMean(double mean) {
-		this.mean = mean;
-	}
-
-
 	public double getMode() {
 		return mode;
-	}
-
-
-	public void setMode(double mode) {
-		this.mode = mode;
 	}
 
 
@@ -124,23 +133,27 @@ public class CalculadoraBean {
 	}
 
 
-	public void setMedian(double median) {
-		this.median = median;
+	public double getVariance() {
+		return variance;
 	}
 
 
 	public double getStdDev() {
 		return stdDev;
 	}
-
-
-	public void setStdDev(double stdDev) {
-		this.stdDev = stdDev;
+	
+	
+	public String getNumberList() {
+		return numberList;
+	}
+	
+	public void setNumberList(String numberList) {
+		this.numberList = numberList;
 	}
 
 
-	public double getVariance() {
-		return variance;
+	public void setMean(double mean) {
+		this.mean = mean;
 	}
 
 
@@ -149,19 +162,27 @@ public class CalculadoraBean {
 	}
 
 
-	public String getListaNumeros() {
-		return listaNumeros;
+	public void setMode(double mode) {
+		this.mode = mode;
 	}
 
 
-	public void setListaNumeros(String listaNumeros) {
-		this.listaNumeros = listaNumeros;
-		stringToList(listaNumeros);
+	public void setMedian(double median) {
+		this.median = median;
 	}
 
 
+	public void setStdDev(double stdDev) {
+		this.stdDev = stdDev;
+	}
+	
 	public List<String> getPastList() {
 		return pastList;
+	}
+
+
+	public void setPastList(List<String> pastList) {
+		this.pastList = pastList;
 	}
 	
 	
