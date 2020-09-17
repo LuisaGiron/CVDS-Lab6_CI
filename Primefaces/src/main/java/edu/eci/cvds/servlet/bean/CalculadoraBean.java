@@ -28,7 +28,6 @@ public class CalculadoraBean {
 	
 	
 	public double calculateMean(String n) {
-		stringToList(n);
 		mean = 0;
 		for (Double d: numeros) mean += d;
 		mean /= numeros.size();
@@ -37,7 +36,6 @@ public class CalculadoraBean {
 	}
 	
 	public double calculateMode(String n) {
-		stringToList(n);
 		int reps = 0;
 		HashMap<Double, Integer> map = new HashMap<Double, Integer>();
 		for (Double d: numeros) {
@@ -54,7 +52,6 @@ public class CalculadoraBean {
 	}
 	
 	public double calculateMedian(String n) {
-		stringToList(n);
 		Collections.sort(numeros);
 		int size = numeros.size();
 		median = (size % 2 == 0) ? (numeros.get(size/2-1)+numeros.get(size/2))/2: numeros.get((size-1)/2);
@@ -92,7 +89,7 @@ public class CalculadoraBean {
 	
 	
 	private void stringToList(String n) {
-		String[] strs = n.split("; ");
+		String[] strs = n.split(";");
 		for (String s: strs) numeros.add(Double.parseDouble(s));
 	}
 
@@ -154,6 +151,7 @@ public class CalculadoraBean {
 
 	public void setListaNumeros(String listaNumeros) {
 		this.listaNumeros = listaNumeros;
+		stringToList(listaNumeros);
 	}
 	
 	
