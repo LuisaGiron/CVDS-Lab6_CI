@@ -99,7 +99,63 @@
 
 ## **Parte IV. - Frameworks Web MVC – Java Server Faces / Prime Faces**
 
+*Escriba una aplicación web que utilice PrimeFaces para calcular la media, la moda, la desviación estándar y varianza de un conjunto de N números reales. 
+Este conjunto de N números reales deben ser ingresados por el usuario de manera que puedan ser utilizados para los cálculos.*
 
+1. Agregar las siguientes dependencias al POM:
+
+	```
+    <!-- https://mvnrepository.com/artifact/javax/javaee-api -->
+    <dependency>
+        <groupId>javax</groupId>
+        <artifactId>javaee-api</artifactId>
+        <version>7.0</version>
+        <scope>provided</scope>
+    </dependency>
+    
+    <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-api -->
+    <dependency>
+        <groupId>com.sun.faces</groupId>
+        <artifactId>jsf-api</artifactId>
+        <version>2.2.20</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-impl -->
+    <dependency>
+        <groupId>com.sun.faces</groupId>
+        <artifactId>jsf-impl</artifactId>
+        <version>2.2.20</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+    <dependency>
+        <groupId>org.primefaces</groupId>
+        <artifactId>primefaces</artifactId>
+        <version>8.0</version>
+    </dependency>
+	```
+
+
+2. Las configuraciones al 'web.xml' son:
+
+**Acerca de los descriptores de implementación**
+Un descriptor de implementación de una aplicación web describe las clases, los recursos y la configuración de la aplicación y cómo los usa el servidor web para entregar solicitudes web. 
+Cuando el servidor web recibe una solicitud para la aplicación, usa el descriptor de implementación con el fin de asignar la URL de la solicitud al código que debe controlarla.
+
+	+ **servlet** -> declara el servlet, lo que incluye un nombre que usan otros elementos en el archivo para referirse al servlet, la clase que se usará para el servlet y los parámetros de inicialización.
+	+ **servlet-mapping** -> especifica un patrón de URL y el nombre de un servlet declarado para usar con solicitudes cuya URL coincide con el patrón.
+	+ **welcome-file-list** -> El descriptor de implementación puede especificar una lista de nombres de archivo que el servidor debe probar cuando el usuario accede a una ruta que representa un subdirectorio del WAR (que no esté asignado de manera explícita a un servlet). El estándar de servlet llama a esto la “lista de archivos de bienvenida”. [OPCIONAL]
+
+1. La sección `<welcome-file-list>` es opcional. Le dice al servidor que debe verificar esa URL cuando el usuario intente ingresar a ella.
+
+2. 
 
 
 

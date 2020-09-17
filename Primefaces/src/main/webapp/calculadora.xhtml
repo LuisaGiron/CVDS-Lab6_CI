@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui"
+xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+ 	<h:head>
+ 	</h:head>
+
+	<h:body>
+ 		<h:form id="calculadora_form" method="post">
+			<p:outputLabel value="#{calculadoraBean.mode}" style="display:none"/>
+			<p:inputText value="#{calculadoraBean.listaNumeros}" placeholder="Numbers here"/>
+			<p:outputLabel value="#{calculadoraBean.mean}"/>
+			<p:outputLabel value="#{calculadoraBean.median}"/>
+			<p:outputLabel value="#{calculadoraBean.variance}"/>
+			<p:outputLabel value="#{calculadoraBean.stdDev}"/>
+		</h:form>
+	</h:body>
+
+</html>
