@@ -32,6 +32,16 @@ public class OurServlet extends HttpServlet {
 	
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		manageHTTPRequest(req, resp);
+	}
+	
+	@Override
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		manageHTTPRequest(req, resp);
+	}
+	
+	
+	private void manageHTTPRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			String iden = req.getParameter("id");
 			if (iden == null) throw new IllegalArgumentException();
@@ -59,34 +69,6 @@ public class OurServlet extends HttpServlet {
 		
 	}
 	
-	@Override
-	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		try {
-			String iden = req.getParameter("id");
-			if (iden == null) throw new IllegalArgumentException();
-			try {
-				Todo t = Service.getTodo(Integer.parseInt(iden));	
-			
-				if (t == null) throw new Exception();
-				
-				resp.setStatus(HttpServletResponse.SC_OK);
-				writeOk(resp.getWriter(), t);
-			}catch (IOException ioe) {
-				resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
-				writeNotFound(resp.getWriter());
-			}catch (NumberFormatException nfe) {
-				throw new MalformedURLException();
-			}
-			
-		}catch (MalformedURLException errorURL) {
-			resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-			writeInternalServerError(resp.getWriter());
-		}catch (Exception e) {
-			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-			writeBadRequest(resp.getWriter());
-		}
-		
-	}
 	
 	private void writeInternalServerError(Writer w) {
 		try {

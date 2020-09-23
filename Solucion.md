@@ -8,8 +8,10 @@
 ## **Parte I. - Jugando a ser un cliente HTTP**
 
 1.  Utilizar el comando `telnet www.escuelaing.edu.co 80` para comenzar una conexión TCP/IP.
+
 2.  Revisar el protocolo de transferencia HTTP.
     -   Comando: `GET / HTTP/<1.1|1.0>`
+
 3.  Revise el resultado obtenido. ¿Qué codigo de error sale?, revise el significado del mismo en la lista de códigos de estado HTTP.
 
     -   El resultado es:
@@ -39,6 +41,7 @@
     ![./img/telnet2.PNG](./img/telnet2.PNG)
 
 6.  ¿Cuál es la diferencia entre los verbos GET y POST? ¿Qué otros tipos de peticiones existen?
+
     -   La diferencia entre GET y POST es que POST oculta los datos al enviarlos, mientras que GET muestra las peticiones en texto plano.
     -   Las peticiones HTTP son:
         		* GET: solicita una representación de un recurso específico. Las peticiones que usan el método GET sólo deben recuperar datos.
@@ -50,7 +53,9 @@
         		* OPTIONS: es utilizado para describir las opciones de comunicación para el recurso de destino.
         		* TRACE: realiza una prueba de bucle de retorno de mensaje a lo largo de la ruta al recurso de destino.
         		\* PATCH: es utilizado para aplicar modificaciones parciales a un recurso.
+
 7.  Utilizar ``curl [-v | -i]\`. ¿Cuáles son las diferencias con los diferentes parámetros?
+
     -   Los resultados están en [curl1][1] y [curl2][2]
     -   La diferencia entre -i y -v es que `curl -i` muestra los protocoloes de cabecera usados en la petición.
 
@@ -78,7 +83,7 @@
 ![./img/ourServlet3.PNG](./img/ourServlet3.PNG)
 ![./img/ourServlet4.PNG](./img/ourServlet4.PNG)
 
-## **Parte III.**
+## **Parte III**
 
 1.  Formulario web creado (POST):
 
@@ -100,43 +105,27 @@
 Este conjunto de N números reales deben ser ingresados por el usuario de manera que puedan ser utilizados para los cálculos.*
 
 1.  Agregar las siguientes dependencias al POM:
-
-        
         
             javax
             javaee-api
             7.0
             provided
         
-
-        
-        
             javax.servlet
             jstl
             1.2
-        
-
-        
         
             com.sun.faces
             jsf-api
             2.2.20
         
-
-        
-        
             com.sun.faces
             jsf-impl
             2.2.20
         
-
-        
-        
             org.primefaces
             primefaces
             8.0
-        
-
 
 2.  Las configuraciones al 'web.xml' son:
 
