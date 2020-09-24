@@ -1,0 +1,25 @@
+body {
+	background-color: #30B280; 
+	text-align: center;
+	align-items: center;
+	justify-content: center;	
+}
+
+header {
+	color: white;
+	font-size: 7.5em;
+	font: bold;
+	
+}
+
+.numero { 
+	float: left;
+}
+
+#numero1 {
+	margin-left: 20%;
+}
+
+#reiniciar {
+	margin: 5%;
+}

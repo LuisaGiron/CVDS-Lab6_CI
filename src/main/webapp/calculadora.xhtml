@@ -3,28 +3,56 @@
 <html xmlns="http://www.w3c.org/1999/xhtml"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:p="http://primefaces.org/ui"
-xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+xmlns:f="http://java.sun.com/jsf/core">
+
+
  	<h:head>
+ 		<title>
+ 			Calculadora
+ 		</title>
+ 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+ 		<link rel="stylesheet" href="style.css">
+ 		</link>
  	</h:head>
 
 	<h:body>
+
+		<header>
+			Calculadora Estadistica
+		</header>
+		
 		<h:panelGroup layout="block" id="programa">
 	 		<h:form id="calculadora_form" method="post">
 				<p:outputLabel style="display:none"/><br/>
-				<p:inputText id="inputList" value="#{calculadoraBean.numberList}" placeholder="Numbers Here" binding="#{input}"/><br/>
-				<p:outputLabel id="promedio" value="#{calculadoraBean.mean}"/>
-				<p:commandButton value="Calcular Promedio" update="programa" actionListener="#{calculadoraBean.calculateMean(input.value)}"/><br/>
+				<p:inputText id="inputList" value="#{calculadoraBean.numberList}" placeholder="Numbers Here" binding="#{input}"/><br/><br/>
 				
-				<p:outputLabel id="varianza" value="#{calculadoraBean.variance}"/>
-				<p:commandButton value="Calcular Varianza" update="programa" actionListener="#{calculadoraBean.calculateVariance(input.value)}"/><br/>
+				<div class="numero" id="numero1">
+					<p:outputLabel for="boton1" id="promedio" value="#{calculadoraBean.mean}"/><br/>
+					<p:commandButton id="boton1" class="btn btn-info" value="Calcular Promedio" update="programa" actionListener="#{calculadoraBean.calculateMean(input.value)}"/>
+				</div>
 				
-				<p:outputLabel id="stdDev" value="#{calculadoraBean.stdDev}"/>
-				<p:commandButton value="Calcular Desviacion Estandar" update="programa" actionListener="#{calculadoraBean.calculateStandardDeviation(input.value)}"/><br/>
+				<div class="numero">
+					<p:outputLabel for="boton2"  id="varianza" value="#{calculadoraBean.variance}"/><br/>
+					<p:commandButton id="boton2" class="btn btn-info" value="Calcular Varianza" update="programa" actionListener="#{calculadoraBean.calculateVariance(input.value)}"/>
+				</div>
 				
-				<p:outputLabel id="median" value="#{calculadoraBean.median}"/>
-				<p:commandButton value="Calcular Mediana" update="calculadora_form" actionListener="#{calculadoraBean.calculateMedian(input.value)}"/><br/>
-				<p:commandButton value="Reiniciar" update="programa" actionListener="#{calculadoraBean.restart}"/><br/>
-
+				<div class="numero">
+					<p:outputLabel for="boton3"  id="stdDev" value="#{calculadoraBean.stdDev}"/><br/>
+					<p:commandButton id="boton3" class="btn btn-info" value="Calcular Desviacion Estandar" update="programa" actionListener="#{calculadoraBean.calculateStandardDeviation(input.value)}"/>
+				</div>
+				
+				<div class="numero">
+					<p:outputLabel for="boton4"  id="median" value="#{calculadoraBean.median}"/><br/>
+					<p:commandButton id="boton4" class="btn btn-info" value="Calcular Mediana" update="calculadora_form" actionListener="#{calculadoraBean.calculateMedian(input.value)}"/><br/>
+				</div><br/>
+				
+				
+				<div id="reiniciar">
+					<p:commandButton id="boton5"  class="btn btn-danger" value="Reiniciar" update="programa" actionListener="#{calculadoraBean.restart}"/><br/>
+				</div>
+				
+				
 			</h:form>
 			
 			
